@@ -2,9 +2,10 @@
       ssh -A -l cnh eofe7.mit.edu
       ssh -A nvidia-bcm
 
-      cd   /home/cnh/
+### Setup an environment on nvidia-bcm
+      cd   ~
       mkdir myenv
-      cd /home/cnh/myenv
+      cd ~/myenv
       wget https://repo.anaconda.com/miniconda/Miniconda3-py312_24.3.0-0-Linux-x86_64.sh
       chmod +x Miniconda3-py312_24.3.0-0-Linux-x86_64.sh
       ./Miniconda3-py312_24.3.0-0-Linux-x86_64.sh -p mc3 -b
@@ -22,6 +23,8 @@
       pip install git+https://github.com/huggingface/transformers@v4.36.2
       site_pkg_path=$(python -c 'import site; print(site.getsitepackages()[0])') && cp -rv ./llava/train/transformers_replace/* $site_pkg_path/transformers/
 
+
+### Test on dgx-01
        ssh dgx-01
 
        cd /raid/cnh
